@@ -1,0 +1,6 @@
+{
+    "logDirectory":"e2e/logs",
+    "logAccessFile":"e2e/logs/access.log",
+    "logAppFile":"e2e/logs/app.log",
+    "logErrorFile":"e2e/logs/errors.log"
+}

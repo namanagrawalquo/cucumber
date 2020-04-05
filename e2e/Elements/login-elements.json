@@ -1,0 +1,6 @@
+{
+    "emailTextboxId":"email",
+    "passwordTextboxId":"password",
+    "brandNameLabelXpath":"//*[@class='brand-name']",
+    "loginButtonId":"loginBtn"
+}
