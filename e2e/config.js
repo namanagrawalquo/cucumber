@@ -46,9 +46,21 @@ exports.config = {
     // require step definitions
     require: [
       './Definitions/login-steps.js' // accepts a glob
-    ]
+    ],
+    // Tell CucumberJS to save the JSON report
+    format: 'json:e2e/results.json',
+    strict: true
   },
 
+  // Here the magic happens
+  plugins: [{
+    package: require.resolve('protractor-multiple-cucumber-html-reporter-plugin'),
+    options:{
+      // read the options part
+      automaticallyGenerateReport: true,
+      removeExistingJsonReportFile: true,
+    }
+  }],
 
   beforeLaunch: function() {
     log4js.configure({

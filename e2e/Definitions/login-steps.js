@@ -1,4 +1,4 @@
-const { Given, When, Then, Before, setDefaultTimeout } = require('cucumber');
+const { Given, When, Then, And, setDefaultTimeout } = require('cucumber');
 const expect = require('chai').expect;
 const env = require('../environment.js');
 const LoginPage = require('../Pages/login-page.js');
@@ -8,18 +8,19 @@ setDefaultTimeout(60 * 1000);
 let loginPage = new LoginPage();
 let pageTitle;
 
-Given('Launch the browser', async () => {
+Given('A user navigates to the application login page', async () => {
     await browser.driver.get(env.baseUrl + env.envPath);
 });
 
-When('Get the page title', async () => {
-    pageTitle = await browser.driver.getTitle();
-    await expect(pageTitle).to.be.equal('Login');
+When(/^user enters (.*) and (.*)/, async (email, password) => {
+    await loginPage.enterEmail(email);
+    await loginPage.enterPassword(password);
 });
 
-Then('Verify the page title', async () => {
-    await loginPage.enterEmail('naman@gmail.com');
-    await loginPage.enterPassword('nanama');
+When(/^user clicks on the Login button/, async () => {
     await loginPage.clickOnLogin();
-    await expect(await loginPage.getErrorText()).to.be.equal('sdasd');
+});
+
+Then(/^A validation (.*) should display on page/, async (expectedMessage) => {
+    await expect(await loginPage.getErrorText()).to.be.equal(expectedMessage);
 });

@@ -5,6 +5,7 @@
     "cucumber": "^6.0.5",
     "geckodriver": "^1.19.1",
     "log4js": "^6.1.2",
-    "protractor-cucumber-framework": "^6.2.1"
+    "protractor-cucumber-framework": "^6.2.1",
+    "protractor-multiple-cucumber-html-reporter-plugin": "^1.8.1"
   }
 }

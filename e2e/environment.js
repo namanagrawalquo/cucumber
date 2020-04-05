@@ -35,7 +35,7 @@ module.exports = {
 
   // A base URL for your application under test.
   baseUrl:
-    'https://www.google.com/',
+    'https://start4.quovantis.com/',
   envPath:
     'precached'
 };

@@ -1,7 +1,13 @@
-@tagPlaceholder1 @tagPlaceholder2
-Feature: Launch browser with the help of cucumber
-  Scenario: Check title of google page
-    Given Launch the browser
-     When Get the page title
-     Then Verify the page title
+Feature: Login
 
+  Scenario Outline: Check valid message is displayed when login credentials are wrong
+    Given A user navigates to the application login page
+    When user enters <email> and <password>
+    And user clicks on the Login button
+    Then A validation <message> should display on page
+
+    Examples:
+      | email           | password    | message                                                  |
+      | jarrod@test.com | Test_100    | Either e-mail or password you have entered is incorrect. |
+      | abc@test.com    | Test_1000   | Either e-mail or password you have entered is incorrect. |
+      | abc@testrrr.com | Test_10rr00 | Either e-mail or password you have entered is incorrect. |
