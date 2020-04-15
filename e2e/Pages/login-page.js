@@ -9,10 +9,11 @@ let LoginPage = function() {
     const password = element(by.id(loginElements.passwordTextboxId));
     const brandName = element(by.xpath(loginElements.brandNameLabelXpath));
     const loginButton = element(by.id(loginElements.loginButtonId));
-    const errorMsg = element(by.id('err-invalidAttempt'));
+    const errorMsg = element(by.id(loginElements.loginErrorId));
+    const profileDropdown = element(by.xpath(loginElements.profileDropdownXpath));
 
     // To get the title of page
-    this.enterEmail =  async function(emailId) {
+    this.enterEmail =  async (emailId) => {
         try {
             let EC = protractor.ExpectedConditions;
             // Waits for the element with id 'abc' to be visible on the dom.
@@ -25,7 +26,7 @@ let LoginPage = function() {
     };
 
     // To get the title of page
-    this.enterPassword =  async function(emailId) {
+    this.enterPassword =  async (emailId) => {
         try {
             let EC = protractor.ExpectedConditions;
             // Waits for the element with id 'abc' to be visible on the dom.
@@ -37,7 +38,7 @@ let LoginPage = function() {
         }
     };
 
-    this.clickOnLogin =  async function() {
+    this.clickOnLogin =  async () => {
         try {
             let EC = protractor.ExpectedConditions;
             // Waits for the element with id 'abc' to be visible on the dom.
@@ -49,12 +50,26 @@ let LoginPage = function() {
         }
     };
 
-    this.getErrorText = async function() {
+    this.getErrorText = async () => {
         try {
             let EC = protractor.ExpectedConditions;
             // Waits for the element with id 'abc' to be visible on the dom.
             await browser.wait(EC.visibilityOf(errorMsg), 10000);
             let text = await errorMsg.getText();
+            logger.info('Error message text is: '+text);
+            return text;
+        } catch (error) {
+            logger.error('Error occurred:' +error);
+        }
+    };
+
+    this.getProfileText = async () => {
+        try {
+            let EC = protractor.ExpectedConditions;
+            // Waits for the element with id 'abc' to be visible on the dom.
+            await browser.wait(EC.visibilityOf(profileDropdown), 10000);
+            let text = await profileDropdown.getText();
+            logger.info('Email id text in dropdown is: '+text);
             return text;
         } catch (error) {
             logger.error('Error occurred:' +error);

@@ -48,6 +48,7 @@ exports.config = {
       './supports/take-screenshot.js',
       './Definitions/login-steps.js' // accepts a glob,
     ],
+    tags: '@smoke or @regression',
     // Tell CucumberJS to save the JSON report
     format: 'json:e2e/results.json',
     strict: true

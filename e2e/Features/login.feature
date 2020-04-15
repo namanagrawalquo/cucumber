@@ -1,6 +1,8 @@
+@login
 Feature: Login
 
-  Scenario Outline: Check valid message is displayed when login credentials are wrong
+  @smoke @regression
+  Scenario Outline: Check validation message is displayed when login credentials are wrong
     Given A user navigates to the application login page
     When user enters <email> and <password>
     And user clicks on the Login button
@@ -11,3 +13,15 @@ Feature: Login
       | jarrod@test.com | Test_100    | Either e-mail or password you have entered is incorrect. |
       | abc@test.com    | Test_1000   | Either e-mail or password you have entered is incorrect. |
       | abc@testrrr.com | Test_10rr00 | Either e-mail or password you have entered is incorrect. |
+
+  @regression
+  Scenario Outline: Check login is successful when credentials are correct
+    Given A user navigates to the application login page
+    When user enters <email> and <password>
+    And user clicks on the Login button
+    Then user with <email> should redirect to the dashboard page
+
+    Examples:
+      | email                   | password |
+      | testuser343232@test.com | Test_100 |
+

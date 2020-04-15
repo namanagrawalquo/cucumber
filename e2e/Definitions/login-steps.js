@@ -6,7 +6,6 @@ const LoginPage = require('../Pages/login-page.js');
 setDefaultTimeout(60 * 1000);
 
 let loginPage = new LoginPage();
-let pageTitle;
 
 Given('A user navigates to the application login page', async () => {
     await browser.driver.get(env.baseUrl + env.envPath);
@@ -23,4 +22,8 @@ When(/^user clicks on the Login button/, async () => {
 
 Then(/^A validation (.*) should display on page/, async (expectedMessage) => {
     await expect(await loginPage.getErrorText()).to.be.equal(expectedMessage);
+});
+
+Then(/^user with (.*) should redirect to the dashboard page/, async (emailText) => {
+    await expect(await loginPage.getProfileText()).to.be.equal(emailText);
 });
