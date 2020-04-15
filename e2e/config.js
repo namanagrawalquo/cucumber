@@ -45,7 +45,8 @@ exports.config = {
   cucumberOpts: {
     // require step definitions
     require: [
-      './Definitions/login-steps.js' // accepts a glob
+      './supports/take-screenshot.js',
+      './Definitions/login-steps.js' // accepts a glob,
     ],
     // Tell CucumberJS to save the JSON report
     format: 'json:e2e/results.json',
@@ -59,6 +60,23 @@ exports.config = {
       // read the options part
       automaticallyGenerateReport: true,
       removeExistingJsonReportFile: true,
+      pageTitle: 'Cucumber Test Run',
+      disableLog: true,
+      displayDuration: true,
+      reportName: "Start4 Cucumber Test Run",
+      customData: {
+        title: 'Run Information',
+        data: [
+            {label: 'Project', value: 'Custom project'},
+            {label: 'Release', value: '1.2.3'},
+            {label: 'Cycle', value: 'B11221.34321'},
+            {label: 'Execution Start Time', value: 'Nov 19th 2017, 02:31 PM EST'},
+            {label: 'Execution End Time', value: 'Nov 19th 2017, 02:56 PM EST'}
+        ]
+      },
+      jsonOutputPath: 'e2e/json-output',
+      reportPath: 'e2e/Reports',
+      removeOriginalJsonReportFile: true
     }
   }],
 

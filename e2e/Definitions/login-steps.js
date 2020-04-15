@@ -1,4 +1,4 @@
-const { Given, When, Then, And, setDefaultTimeout } = require('cucumber');
+const { Given, When, Then, setDefaultTimeout } = require('cucumber');
 const expect = require('chai').expect;
 const env = require('../environment.js');
 const LoginPage = require('../Pages/login-page.js');

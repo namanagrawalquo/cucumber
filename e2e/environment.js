@@ -11,7 +11,7 @@ module.exports = {
     // 'browserName': 'internet explorer',
     // 'ignoreProtectedModeSettings': true,
     'browserName':
-      (process.env.TEST_BROWSER_NAME || 'firefox'),
+      (process.env.TEST_BROWSER_NAME || 'chrome'),
     'version':
       (process.env.TEST_BROWSER_VERSION || 'ANY'),
     'chromeOptions': {
@@ -28,6 +28,20 @@ module.exports = {
       'excludeSwitches': ['enable-automation'],
       'useAutomationExtension': false,
     },
+
+    // Add this
+    metadata: {
+      browser: {
+          name: 'chrome',
+          version: '80'
+      },
+      device: 'Local Machine',
+      platform: {
+          name: 'Windows',
+          version: 'Windows 10'
+      }
+    },
+    
     'moz:firefoxOptions': {
       // gecko driver pref will put here
     }

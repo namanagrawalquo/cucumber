@@ -1,4 +1,7 @@
 {
+  "scripts": {
+		"test": "protractor .\\e2e\\config.js"
+	},
   "dependencies": {
     "chai": "^4.2.0",
     "chromedriver": "^80.0.1",
