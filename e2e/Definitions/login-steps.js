@@ -27,3 +27,15 @@ Then(/^A validation (.*) should display on page/, async (expectedMessage) => {
 Then(/^user with (.*) should redirect to the dashboard page/, async (emailText) => {
     await expect(await loginPage.getProfileText()).to.be.equal(emailText);
 });
+
+When(/^user clicks on the profile dropdown/, async () => {
+    await loginPage.clickOnProfileDropdown();
+});
+
+When(/^user clicks on logout/, async () => {
+    await loginPage.clickOnLogout();
+});
+
+Then('user should redirect to the {string} page', async (string) => {
+    await expect(await loginPage.getLoginTitleText()).to.be.equal(string);
+});

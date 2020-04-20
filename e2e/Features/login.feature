@@ -1,9 +1,11 @@
 @login
 Feature: Login
 
+  Background: Navigate to the login page
+    Given A user navigates to the application login page
+
   @smoke @regression
   Scenario Outline: Check validation message is displayed when login credentials are wrong
-    Given A user navigates to the application login page
     When user enters <email> and <password>
     And user clicks on the Login button
     Then A validation <message> should display on page
@@ -16,7 +18,6 @@ Feature: Login
 
   @regression
   Scenario Outline: Check login is successful when credentials are correct
-    Given A user navigates to the application login page
     When user enters <email> and <password>
     And user clicks on the Login button
     Then user with <email> should redirect to the dashboard page
@@ -24,4 +25,11 @@ Feature: Login
     Examples:
       | email                   | password |
       | testuser343232@test.com | Test_100 |
+
+  @regression
+  Scenario: Check user is logged out when clicked on logout
+    When user clicks on the profile dropdown
+    And user clicks on logout
+    Then user should redirect to the 'Login' page
+
 

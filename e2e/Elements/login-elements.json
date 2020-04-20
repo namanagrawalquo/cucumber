@@ -4,5 +4,7 @@
     "brandNameLabelXpath":"//*[@class='brand-name']",
     "loginButtonId":"loginBtn",
     "loginErrorId":"err-invalidAttempt",
-    "profileDropdownXpath":"//*[@id='profileDropDown']/span[2]"
+    "profileDropdownXpath":"//*[@id='profileDropDown']/span[2]",
+    "logoutXpath":"//*[@id='Logout']/span[2]",
+    "profileDropdownId":"profileDropDown"
 }

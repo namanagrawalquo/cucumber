@@ -81,7 +81,7 @@ exports.config = {
     }
   }],
 
-  beforeLaunch: function() {
+  beforeLaunch: () => {
     log4js.configure({
         appenders: {
           access: {
